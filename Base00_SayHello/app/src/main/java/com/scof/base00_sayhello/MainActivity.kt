@@ -6,18 +6,19 @@ import com.scof.base00_sayhello.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding // ActivityMainBinding 형
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(binding.root) // ActivityMain.xml의 루트로 설정
 
+        /*btnSay 클릭 리스너*/
         binding.btnSay.setOnClickListener{
-            binding.textSay.setText("Hello Kotlin")
-            // binding.textSay.text = "Hello Kotlin"으로 사용 가능
+            binding.textSay.text = "Hello Kotlin"
+            // setText 사용가능하지만 지양
         }
     }
 }

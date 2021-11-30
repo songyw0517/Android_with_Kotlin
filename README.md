@@ -4,48 +4,90 @@
 
 ## 방법
 1. build.gradle (Module:~) 파일에 다음 내용 추가
-    ``` app
+    ``` gradle
         android { 
             ... 
             
             buildFeatures {
-                viewBinding = true 
+                viewBinding true 
             } 
         }
     ```
 2. 오른쪽 상단의 'Sync Now' 클릭하거나, "File -> Sync Project with Gradle files" 선택
 
 3. 'MainActivity.kt' 파일에서 바인딩 사용
-    ``` kotlin
-    package com.scof.base00_sayhello
+>    ``` kotlin
+>    package com.scof.base00_sayhello
+>
+>    import androidx.appcompat.app.AppCompatActivity
+>    import android.os.Bundle
+>
+>    // 아래의 import는 자동으로 처리된다.
+>    import com.scof.base00_sayhello.databinding.ActivityMainBinding
+>
+>
+>    class MainActivity : AppCompatActivity() {
+>        
+>        // 멤버 변수로 ActivityMainBinding 객체 변수 선언
+>        // 이후에 binding 변수를 사용하여 위젯에 접근
+>        private lateinit var binding: ActivityMainBinding
+>
+>        override fun onCreate(savedInstanceState: Bundle?) {
+>            super.onCreate(savedInstanceState)
+>            setContentView(R.layout.activity_main)
+>
+>            // ActivityMainBinding 객체를 구하여 ContentView로 등록
+>            // ContentView는 binding의 root 뷰
+>            binding = ActivityMainBinding.inflate(layoutInflater)
+>            setContentView(binding.root)
+>
+>            // binding을 사용하여 btnSay에 접근
+>            binding.btnSay.setOnClickListener{
+>                binding.textSay.setText("Hello Kotlin")
+>                // binding.textSay.text = "Hello Kotlin"으로 사용 가능
+>            }
+>        }
+>    }
+>    ```
 
-    import androidx.appcompat.app.AppCompatActivity
-    import android.os.Bundle
+## 코드
+>``` kotlin
+> // MainActivity.kt
+>    package com.scof.base00_sayhello
+>
+>    import androidx.appcompat.app.AppCompatActivity
+>    import android.os.Bundle
+>    import com.scof.base00_sayhello.databinding.ActivityMainBinding
+>
+>
+>    class MainActivity : AppCompatActivity() {
+>        // ActivityMainBinding 형
+>        private lateinit var binding: ActivityMainBinding 
+>
+>        override fun onCreate(savedInstanceState: Bundle?) {
+>            super.onCreate(savedInstanceState)
+>            setContentView(R.layout.activity_main)
+>
+>            binding = ActivityMainBinding.inflate(layoutInflater)
+>            setContentView(binding.root) // ActivityMain.xml의 루트로 설정
+>
+>            /*btnSay 클릭 리스너*/
+>            binding.btnSay.setOnClickListener{
+>                binding.textSay.text = "Hello Kotlin"
+>                // setText 사용가능하지만 지양
+>            }
+>        }
+>    }
+>    ```
+    
 
-    // 아래의 import는 자동으로 처리된다.
-    import com.scof.base00_sayhello.databinding.ActivityMainBinding
+# 패키지 이름은 example이 아닌 것으로
+- 그렇지 않으면(패키지 이름이 example이면) 플레이스토어에 올라갈 수 없다.
 
+# 함수들
+- Log.d
 
-    class MainActivity : AppCompatActivity() {
-        
-        // 멤버 변수로 ActivityMainBinding 객체 변수 선언
-        // 이후에 binding 변수를 사용하여 위젯에 접근
-        private lateinit var binding: ActivityMainBinding
-
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_main)
-
-            // ActivityMainBinding 객체를 구하여 ContentView로 등록
-            // ContentView는 binding의 root 뷰
-            binding = ActivityMainBinding.inflate(layoutInflater)
-            setContentView(binding.root)
-
-            // binding을 사용하여 btnSay에 접근
-            binding.btnSay.setOnClickListener{
-                binding.textSay.setText("Hello Kotlin")
-                // binding.textSay.text = "Hello Kotlin"으로 사용 가능
-            }
-        }
-    }
-    ```
+# 객체들
+## TextView
+## Button
+## ImageView

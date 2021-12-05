@@ -2,6 +2,7 @@ package com.scof.base06_lazyinitialization
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 class MainActivity : AppCompatActivity() {
     /* 지연초기화
@@ -18,7 +19,6 @@ class MainActivity : AppCompatActivity() {
     var name:String = "Scott" // name이 사용되지 않는다면 "Scott" 값을 가진 메모리 낭비
     lateinit var name2:String // name2는 어딘가에서 값을 넣는다는 의미
     lateinit var person:Person
-
     // lazy
     // val 변수명 by lazy {변수에 들어갈 '클래스 생성자' 또는 '값'}
     // val 이기에 바꿀 수 없다.
@@ -28,12 +28,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.d("age", "${age.address}")
     }
 }
 
 class Person{
     var name = ""
     var age = ""
-    var address = ""
+    var address = "뇨롱이"
     var tel = ""
 }

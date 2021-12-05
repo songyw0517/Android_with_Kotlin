@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:minLines="3"
+                    android:text="edit Text"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:minLines="3"
+                    android:text="check Box"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/Radio"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:minLines="3"
+                    android:text="Radio"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/toggleSwitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:minLines="2"
+                    android:text="toggle Switch"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/progressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:minLines="3"
+                    android:text="progress Bar"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/seekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:minLines="3"
+                    android:text="seek Bar"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/RatingBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:minLines="3"
+                    android:text="rating Bar"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/changeView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:minLines="3"
+                    android:text="화면전환"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:minLines="3"
+                    android:text="스피너"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/button9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:minLines="3"
+                    android:text="button9"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

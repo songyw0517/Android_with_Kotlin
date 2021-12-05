@@ -329,7 +329,148 @@
         // result에는 number의 세이프티 콜로 인해 
         // plus 연산이 수행되지 않고 51이 저장된다.
         result = number?.plus(12) ?: 51
-        ``` 
+        ```
+
+# 지연 초기화
+- 특정 조건에서만 사용되는 변수가 있는 경우 미리 값을 할당하면 자원(메모리) 낭비가 된다.
+- 메모리가 낭비되는 것을 막기 위해 '지연 초기화'를 사용한다.
+    ## 사용방법
+    1. lateinit
+    2. lazy
+    <br><br>
+    
+    ## lateinit (var)
+    ``` kotlin
+    // name이 사용되지 않는다면 "Scott" 값을 가진 메모리 낭비
+    var name:String = "Scott"
+
+    // lateinit를 사용하면 값을 넣지 않고 변수를 선언할 수 있다.
+    lateinit var name2:String
+
+    if(::name2.isInitialized){
+        // name2가 초기화가 되었을 때만 접근할 수 있는 코드
+        // :: 를 사용해야 isInitialized를 쓸 수 있다.
+    }
+    ```
+
+    ## lazy (val)
+    - var를 사용할 수 없다.
+    - 변수가 호출되는 시점에서 초기화가 이루어지기에 '지연 초기화'라고 할 수 있다.
+    ``` kotlin
+    class Person{
+        var name = "song"
+        var age = "22"
+        var address = "서울 광진구"
+        var tel = "010-1234-5678"
+    }
+
+    // song은 Person 형
+    // 호출되는 시점에서 메모리 할당(객체 생성)이 이루어진다.
+    val song by lazy { Person() } // 아직 초기화가 이루어지지 않음
+
+    ...
+
+    // 호출(song.address) 이 되는 시점에 초기화가 이루어진다.
+    Log.d("init_test", "${song.address}")
+    ```
+
+# 스코프 함수 (scope function)
+- run, let, apply, also, with
+- 여러 기능을 수행하는데 반복되는 객체의 이름을 줄이기 위해 사용된다.
+- -> 코드를 간소화하는데 사용된다. <br><br>
+    # 사용법
+    ``` kotlin
+    class seoulPeople{
+        var person = mutableListOf<Person>()
+        init {
+            person.add(Person("Scott", "010-1234-5678", 19))
+            person.add(Person("kelly", "010-3235-5652", 20))
+            person.add(Person("Michael", "010-9999-5652", 23))
+        }
+    }
+    data class Person(
+        var name:String = "",
+        var phones:String = "",
+        var age:Int = 21
+    )
+
+    // 아래의 코드를 줄이기 위함
+    seoulPeople.person.add(Person("Scott", "010-1234-5678", 19))
+    seoulPeople.person.add(Person("kelly", "010-3235-5652", 20))
+    seoulPeople.person.add(Person("Michael", "010-9999-5652", 23))
+    ```
+    ## 1. RUN
+    ``` kotlin
+    val resultRun = seoulPeople.person.run{
+        // seoulPeople.person 생략
+        // 아래의 코드를 수행하고 마지막 값을 반환, 
+        // 반환값 없을 경우 true 반환
+        add(Person("Scott", "010-1234-5678", 19))
+        add(Person("kelly", "010-3235-5652", 20))
+        add(Person("Michael", "010-9999-5652", 23))
+        11 // 반환되는 값
+    }
+    ```
+    ## 2. LET
+    ``` kotlin
+    val resultLet = seoulPeople.person.let{ persons ->
+        // seoulPeople.person을 여기서는 persons라고 할꺼야
+        // 아래의 코드를 수행하고 마지막 값을 반환, 
+        // 반환값 없을 경우 true 반환
+        persons.add(Person("Scott", "010-1234-5678", 19))
+        persons.add(Person("kelly", "010-3235-5652", 20))
+        persons.add(Person("Michael", "010-9999-5652", 23))
+        "1212" // 반환되는 값
+    }
+    ```
+    ## 3. APPLY
+    ``` kotlin
+    val resultApply = seoulPeople.person.apply {
+        // 아래의 코드를 수행하고 person을 반환
+        add(Person("Scott", "010-1234-5678", 19))
+        add(Person("kelly", "010-3235-5652", 20))
+        add(Person("Michael", "010-9999-5652", 23))
+    }
+    ```
+    ## 4. ALSO
+    ``` kotlin
+    val resultAlso = seoulPeople.person.also { persons ->
+        // 아래의 코드를 수행하고 persons를 반환
+        // apply와 달리 persons로 
+        persons.add(Person("Scott", "010-1234-5678", 19))
+        persons.add(Person("kelly", "010-3235-5652", 20))
+        persons.add(Person("Michael", "010-9999-5652", 23))
+    }
+    ```
+    ## 5. WITH
+    ``` kotlin
+    package com.scof.base08_with
+
+    import androidx.appcompat.app.AppCompatActivity
+    import android.os.Bundle
+    import com.scof.base08_with.databinding.ActivityMainBinding
+
+    class MainActivity : AppCompatActivity() {
+
+        // private lateinit var binding: ActivityMainBinding
+        val binding by lazy {ActivityMainBinding.inflate(layoutInflater)}
+
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_main)
+
+    //        binding.button.setOnClickListener{ }
+    //        binding.imageView.setImageLevel(50)
+    //        binding.textView.text = "반가워"
+
+            with(binding){
+                button.setOnClickListener{ }
+                imageView.setImageLevel(50)
+                textView.text = "반가워"
+            }
+        }
+    }
+    ```
 ## Log.d()
 - Log.d([태그], [메시지])로 구성
     - Log.d("MainActivity", "Hello Kotlin")
@@ -387,33 +528,27 @@
         }
         ```
 
-    4. 다른 방법 (더 간단)
+    4. 조금 더 쉬운 방법
         ``` kotlin
-        package com.scof.base00_sayhello
-    
+        package com.scof.base10_edittextview
+
         import androidx.appcompat.app.AppCompatActivity
         import android.os.Bundle
-    
-        // 아래의 import는 자동으로 처리된다.
-        import com.scof.base00_sayhello.databinding.ActivityMainBinding
-    
-    
+        import com.scof.base10_edittextview.databinding.ActivityMainBinding
+
         class MainActivity : AppCompatActivity() {
-            
-            val binding by lazy {ActivityMainBinding.inflate(layoutInflater)}
-    
+            // private lateinit var binding: ActivityMainBinding
+            // 위 코드 대신 아래 코드로 변경
+            val binding by lazy { ActivityMainBinding.inflate(layoutInflater)}
+
             override fun onCreate(savedInstanceState: Bundle?) {
                 super.onCreate(savedInstanceState)
                 setContentView(R.layout.activity_main)
-    
-                // ActivityMainBinding 객체를 구하여 ContentView로 등록
-                // ContentView는 binding의 root 뷰
                 
-                // binding을 사용하여 btnSay에 접근
-                binding.btnSay.setOnClickListener{
-                    binding.textSay.setText("Hello Kotlin")
-                    // binding.textSay.text = "Hello Kotlin"으로 사용 가능
-                }
+                // 아래의 setContent 설정 후, binding. 으로 접근
+                setContentView(binding.root)
+                binding.editText
+
             }
         }
         ```

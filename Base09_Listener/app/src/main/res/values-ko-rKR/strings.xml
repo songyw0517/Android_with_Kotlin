@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Base09_Listener</string>
+    <string name="button_text">나는버튼</string>
+    <string name="hello">안녕하쇼</string>
+
+</resources>

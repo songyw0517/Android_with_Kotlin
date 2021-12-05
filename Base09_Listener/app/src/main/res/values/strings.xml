@@ -1,0 +1,10 @@
+<resources>
+    <!--
+    - 오타방지
+
+     -->
+    <string name="app_name">Base09_Listener</string>
+
+    <string name="button_text">I am button</string>
+    <string name="hello">Hi\nHello\nNice to meet you</string>
+</resources>

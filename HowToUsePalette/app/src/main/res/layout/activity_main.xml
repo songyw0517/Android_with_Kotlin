@@ -130,14 +130,74 @@
                     android:textSize="10sp" />
 
                 <Button
-                    android:id="@+id/button9"
+                    android:id="@+id/socket_private"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:maxLines="2"
                     android:minLines="3"
-                    android:text="button9"
+                    android:text="소켓 개인"
+                    android:textSize="10sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:minLines="3"
+                    android:text=""
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/btn2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:minLines="3"
+                    android:text=""
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/btn3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:minLines="3"
+                    android:text=""
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/btn4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:minLines="3"
+                    android:text=""
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/btn5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:minLines="3"
+                    android:text=""
                     android:textSize="10sp" />
             </LinearLayout>
 

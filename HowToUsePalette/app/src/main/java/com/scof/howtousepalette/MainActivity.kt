@@ -57,6 +57,10 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this@MainActivity, SpinnerActivity::class.java)
                 startActivity(intent)
             }
+            socketPrivate.setOnClickListener {
+                val intent = Intent(this@MainActivity, SocketprivateActivity::class.java)
+                startActivityForResult(intent, 21)
+            }
 
 
 

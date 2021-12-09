@@ -61,6 +61,21 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this@MainActivity, SocketprivateActivity::class.java)
                 startActivityForResult(intent, 21)
             }
+            recyclerViewBtn.setOnClickListener {
+                /* 
+                * Data 클래스를 정의하여 사용
+                * 
+                * 사용되는 파일
+                * item_recycler.xml
+                *
+                *
+                *
+                *
+                *
+                * */
+                val intent = Intent(this@MainActivity, RecyclerviewActivity::class.java)
+                startActivity(intent)
+            }
 
 
 

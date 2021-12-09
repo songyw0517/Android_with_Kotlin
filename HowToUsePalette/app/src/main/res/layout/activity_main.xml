@@ -146,14 +146,14 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn1"
+                    android:id="@+id/recyclerView_btn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:maxLines="2"
                     android:minLines="3"
-                    android:text=""
+                    android:text="RecyclerView"
                     android:textSize="10sp" />
 
                 <Button

@@ -76,6 +76,11 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this@MainActivity, RecyclerviewActivity::class.java)
                 startActivity(intent)
             }
+            fragmentBtn.setOnClickListener{
+                val intent = Intent(this@MainActivity, FragmentActivity::class.java)
+                startActivity(intent)
+
+            }
 
 
 

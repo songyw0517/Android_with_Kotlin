@@ -126,7 +126,7 @@
                     android:layout_weight="1"
                     android:maxLines="2"
                     android:minLines="3"
-                    android:text="스피너"
+                    android:text="Spinner"
                     android:textSize="10sp" />
 
                 <Button
@@ -157,14 +157,15 @@
                     android:textSize="10sp" />
 
                 <Button
-                    android:id="@+id/btn2"
+                    android:id="@+id/fragment_btn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:maxLines="2"
                     android:minLines="3"
-                    android:text=""
+                    android:text="Fragment"
+                    android:textAllCaps="false"
                     android:textSize="10sp" />
 
                 <Button

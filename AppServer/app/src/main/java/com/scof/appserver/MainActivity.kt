@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
                 var port:Int = if(portTemp=="") 8080 else portTemp.toInt()
 
 
-                Log.d("서버", "현재 ip = ${ip}, port = ${port}")
+                Log.d("서버", "현재 ip = ${ip}, port = ${port} daf")
                 client = Client(ip!!, port!!)
                 client.connect()
             }
